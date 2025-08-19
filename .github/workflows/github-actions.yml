@@ -2,15 +2,20 @@ name: GitHub Actions
 on:
   push:
     branches:
-      - main
       - dev
   pull_request:
     branches:
-      - main
       - dev
 
 jobs:
   build:
+    name: Build Job
     runs-on: ubuntu-latest
     steps:
       - run: echo "Running build job"
+  test:
+    name: Test Job
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Running test job"
